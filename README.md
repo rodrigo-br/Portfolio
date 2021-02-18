@@ -1,4 +1,4 @@
-# Rodrigo's Portfolio
+# Rodrigo's Portfolio <span style='font-size:40px;'>&#128054;</span>
 
 
 ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)
