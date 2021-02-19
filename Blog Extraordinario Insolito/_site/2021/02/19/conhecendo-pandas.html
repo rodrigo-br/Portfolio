@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/css/tango.css" type="text/css" /><head>
+
+  <meta property="og:image" content="http://extraordinarioinsolito.com/assets/logo.jpg">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="600">
+<meta property="og:description" content="" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Conhecendo a biblioteca Pandas | Extraordinário Insólito</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Conhecendo a biblioteca Pandas" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="O resultado de um projeto pessoal utilizando o Pandas pela primeira vez" />
+<meta property="og:description" content="O resultado de um projeto pessoal utilizando o Pandas pela primeira vez" />
+<link rel="canonical" href="http://localhost:4000/2021/02/19/conhecendo-pandas.html" />
+<meta property="og:url" content="http://localhost:4000/2021/02/19/conhecendo-pandas.html" />
+<meta property="og:site_name" content="Extraordinário Insólito" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-19T00:00:00-03:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2021/02/19/conhecendo-pandas.html","headline":"Conhecendo a biblioteca Pandas","dateModified":"2021-02-19T00:00:00-03:00","datePublished":"2021-02-19T00:00:00-03:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/02/19/conhecendo-pandas.html"},"description":"O resultado de um projeto pessoal utilizando o Pandas pela primeira vez","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Extraordinário Insólito" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Extraordinário Insólito</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/Sobre/">Sobre</a><a class="page-link" href="/Portfolio/">Portfólio</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Conhecendo a biblioteca Pandas</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-02-19T00:00:00-03:00" itemprop="datePublished">Feb 19, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <hr>
+
+<p><br></p>
+
+<h2 id="analisando-e-tratando-dados-com-pandas">Analisando e tratando dados com Pandas</h2>
+
+<p>Após um rápido curso de 10 horas que fiz na Alura<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote">1</a></sup>, resolvi testar meus novos conhecimentos e aproveitar para adiantar um projeto pessoal que já tinha com uns amigos. O projeto trata-se de um jogo de terror, e para acrescentar o máximo de qualidade ao projeto, resolvi pesquisar o máximo possível sobre jogos, filmes, livros e outros conteúdos de terror.</p>
+
+<p><br></p>
+
+<h3 id="filmes">Filmes</h3>
+
+<p>Como sempre gostei muito de filmes de terror, resolvi começar a pesquisar quais são os melhores filmes de terror de todos os tempos, considerando tanto avaliações de críticos profissionais quanto do público em geral. A princípio pensei em pegar o conjunto de dados (dataset) direto da IMDb<sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup>, mas devido ao altíssimo número de dados, quase todos os arquivos passavam de 100mb que é o limite permitido pelo GitHub. Como ainda se trata de um estudo, utilizei um dataset retirado do Kaggle<sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote">3</a></sup>.</p>
+
+<p><br></p>
+
+<h3 id="sobre-o-dataset">Sobre o Dataset</h3>
+
+<p>A primeira coisa que notei ao iniciar meu projeto foi a diferença entre a quantidade de dados que eu estava lidando durante as aulas com o dataset da Kaggle. Enquanto no curso eu trabalhei com 259 linhas e 8 colunas em apenas 1 arquivo csv de 56kb, neste primeiro passo dos meus estudos eu me deparei com dois arquivos csv de 85.855 linhas e dezenas de colunas colunas, um aumento absurdo na quantidade de dados. Para ser sincero, eu imagino que isso seja uma quantidade pequena perto do que eu ainda encontrarei pelo meu caminho.</p>
+
+<p>A segunda coisa que percebi foi que é bem mais simples do que eu pensei. Claro que eu utilizei apenas alguns recursos pois tratava-se apenas de um primeiro contato com a biblioteca e meu conhecimento ainda estava limitado apenas ao que havia sido passado no curso.</p>
+
+<p><br></p>
+
+<h3 id="o-código">O código</h3>
+
+<p>O código abaixo foi escrito utilizando o Jupyter Lab</p>
+
+<p>Primeiro eu faço os imports e depois começo a abrir os arquivos:</p>
+
+<p><br></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c1"># -*- coding: utf-8 -*- 
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">data_filmes</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'IMDb_Movies/IMDb movies.csv'</span><span class="p">)</span>
+
+<span class="n">data_filmes</span></code></pre></figure>
+
+<p><br>
+Logo de cara já é possível ver a quantidade de dados e do que se trata algumas das colunas:</p>
+
+<p><br></p>
+
+<p><img src="/assets/img_posts/dados_filmes_01.jpg" alt=""></p>
+
+<p><img src="/assets/img_posts/dados_filmes_01_ampliado_cima.jpg" alt=""></p>
+
+<p><img src="/assets/img_posts/dados_filmes_01_ampliado_baixo.jpg" alt=""></p>
+
+<p><br>
+Então já abro o segundo arquivo e já dá para ver um número bem maior de colunas:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">data_notas</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'IMDb_Movies/IMDb ratings.csv'</span><span class="p">)</span>
+<span class="n">data_notas</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/dados_notas_01.jpg" alt=""></p>
+
+<p><br></p>
+
+<p>Então começo os trabalhos. Como muitos filmes possuem mais de um gênero (genre) e estão como uma única string, preciso separa-los em uma lista contendo cada gênero separado. Para isso utilizo o split, separando-os pela vírgula. Também reduzo a quantidade de colunas, deixando apenas o que é importante para esta pesquisa:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">data_filmes</span><span class="p">.</span><span class="n">genre</span> <span class="o">=</span> <span class="n">data_filmes</span><span class="p">.</span><span class="n">genre</span><span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">split</span><span class="p">(</span><span class="s">','</span><span class="p">)</span>
+<span class="n">data_filmes</span> <span class="o">=</span> <span class="n">data_filmes</span><span class="p">[[</span><span class="s">'original_title'</span><span class="p">,</span><span class="s">'year'</span><span class="p">,</span> <span class="s">'genre'</span><span class="p">]]</span>
+<span class="n">data_filmes</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/dados_filmes_02_split.jpg" alt=""></p>
+
+<p><br></p>
+
+<p>Agora já separo as colunas importantes do arquivo com as notas e faço a concatenação entre os dois arquivos .csv, criando a variável dataset que reduz as colunas de 71 para apenas 5:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">data_notas</span> <span class="o">=</span> <span class="n">data_notas</span><span class="p">[[</span><span class="s">'weighted_average_vote'</span><span class="p">,</span> <span class="s">'mean_vote'</span><span class="p">]]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_filmes</span><span class="p">,</span> <span class="n">data_notas</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/dataset_01.jpg" alt=""></p>
+
+<p><br></p>
+
+<p>Pronto. Finalmente a hora de separar apenas os filmes de terror.</p>
+
+<p>Nessas próximas linhas eu utilizo um laço for do tamanho do dataset para poder passar por todos os gêneros e separar apenas os de Horror. Utilizo o strip() para remover os possíveis espaços que restaram após o split(‘,’). Também crio uma nova variável que contém apenas os filmes que possuam o gênero Horror e utilizo o iloc[z].values para acrescentar a linha completa de cada um desses filmes, baseado no index e logo que termina o laço, transformo o novo dataset_horror em um DataFrame:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">dataset_horror</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">.</span><span class="n">genre</span><span class="p">[</span><span class="n">z</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">y</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s">'Horror'</span><span class="p">:</span>
+            <span class="n">dataset_horror</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataset</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">z</span><span class="p">].</span><span class="n">values</span><span class="p">)</span>
+            
+<span class="n">dataset_horror</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset_horror</span><span class="p">)</span>
+
+<span class="n">dataset_horror</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/dataset_horror_01.jpg" alt=""></p>
+
+<p><br></p>
+
+<p>Uau! Depois de filtrar 85.855 filmes, terminamos com ‘apenas’ 9.557 que possua Horror entre os gêneros.</p>
+
+<p>Agora é hora de separar somente os melhores avaliados para poder assistir.</p>
+
+<p>Novamente, mais uma variável que utiliza outro for para varrer todos os 9,557 filmes buscando somente aqueles que possuem médias ponderadas E aritméticas com o valor 8 para cima. Mas acontece algo interessante… fiquei sem saber qual das duas médias eu iria utilizar como critério para ordenar os filmes, então resolvi criar mais uma coluna com uma terceira média que é a média aritmética das médias. Ficou confuso? Dá uma olhada nas linhas:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">filmes_para_assistir</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset_horror</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">dataset_horror</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">dataset_horror</span><span class="p">[</span><span class="mi">4</span><span class="p">][</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataset_horror</span><span class="p">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">x</span><span class="p">].</span><span class="n">values</span><span class="p">)</span>
+        
+<span class="n">filmes_para_assistir</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">filmes_para_assistir</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    
+<span class="n">filmes_para_assistir</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/filmes_para_assistir_01.jpg" alt=""></p>
+
+<p><br></p>
+
+<p>Pronto!!! Simples assim.</p>
+
+<p>É importante notar que os gêneros dos filmes podem acabar não significando exatamente o que a gente gostaria, então podemos ver alguns filmes como ‘Post’ (The Post: A Guerra Secreta), ‘Concrete Shark’ e alguns outros filmes que não são o que se pretende ver quando se faz este tipo de pesquisa pensando em tomar sustos e ficar horrorizado.</p>
+
+<p>Outra coisa importante de se levar em consideração é que não foi feito nenhum tipo de consideração em outras variáveis como a região dos filmes, a quantidade de avaliações que o filme possui, a época em que foi lançado e outras coisas que poderiam alterar totalmente essa lista. Por exemplo : Um filme com 1 avaliação nota 10, terá esse valor como média, e como saberemos se essa avaliação foi legítima ou apenas de uma pessoa querendo colocar qualquer nota? Nessa lista vemos muitos filmes que não são tão conhecidos ou até totalmente desconhecidos pelo público estrangeiro. Isso pode inclusive explicar parte considerável dessa lista é de filmes da Ásia Meridional, onde a densidade populacional é enorme e o cinema nacional é extremamente popular.</p>
+
+<p><br>
+Bom, para dar o acabamento do bolo, simplesmente nomeio e traduzo as colunas e ordeno os filmes pela nova média que criei. Por ultimo, salvo o arquivo em csv:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">'Título'</span><span class="p">,</span> <span class="s">'Ano'</span><span class="p">,</span> <span class="s">'Gênero'</span><span class="p">,</span> <span class="s">'Média ponderada'</span><span class="p">,</span> <span class="s">'Média Aritmética'</span><span class="p">,</span> <span class="s">'Média'</span><span class="p">]</span>
+<span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s">'Média'</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">filmes_para_assistir</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">'IMDb_Movies/Filmes_terror_para_assistir.csv'</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="bp">False</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s">'utf-8'</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/filmes_para_assistir_02.jpg" alt=""></p>
+
+<p><br></p>
+
+<h3 id="continuação">Continuação…</h3>
+
+<p>Agora está na hora de continuar estudando e evoluir este trabalho para que fique cada vez melhor e mais interessante. Adicionar uns gráficos, fazer outros tipos de filtragens de dados, trazer informações mais precisas e interessantes para diversos públicos, quem sabe eu não faça um programa com uma interface gráfica?</p>
+
+<p>Me diverti muito com esse estudo, por mais breve e simples que tenha sido, me mostrou que aprendi bem o conteúdo, abriu a minha cabeça para diversas outras coisas que precisam ser levadas em consideração na hora de se analisar dados e tive uma melhor direção de pontos que quero e que preciso melhorar.</p>
+
+<p><br>
+<br></p>
+
+<p><i>Obrigado por ter lido até aqui, você é o máximo! Tenha uma ótima semana. <img class="emoji" title=":heart:" alt=":heart:" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" height="20" width="20"></i></p>
+
+<p><br></p>
+
+<hr>
+
+<p>Referências:</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p><a href="https://cursos.alura.com.br/course/python-funcoes-pacotes-pandas">Python para Data Science: Funções, Pacotes e Pandas básico</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://datasets.imdbws.com/">Dataset oficial da IMDb</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:3" role="doc-endnote">
+      <p><a href="https://www.kaggle.com/stefanoleone992/imdb-extensive-dataset">Dataset de filmes da IMDb Kaggle</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+<a class="u-url" href="/2021/02/19/conhecendo-pandas.html" hidden></a>
+</article>
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://extraordinario-insolito.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Extraordinário Insólito</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rodrigo Alves Brito</li>
+<li><a class="u-email" href="mailto:rodrigoab123@gmail.com">rodrigoab123@gmail.com</a></li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list">
+<li><a href="https://github.com/rodrigo-br"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">GitHub</span></a></li>
+<li><a href="https://www.linkedin.com/in/rodrigoalves-brito"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">Linkedin</span></a></li>
+</ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Um diário onde escrevo toda a minha trajetória para ser um Cientista de Dados. Interesse especial em Machine Learning e Deep Learning.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
