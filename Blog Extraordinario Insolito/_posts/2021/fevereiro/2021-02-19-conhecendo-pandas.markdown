@@ -185,7 +185,7 @@ Outra coisa importante de se levar em consideração é que não foi feito nenhu
 
 
 <br>
-Bom, para dar o acabamento do bolo, simplesmente nomeio e traduzo as colunas e ordeno os filmes pela nova média que criei. Por ultimo, salvo o arquivo em csv:
+Bom, para dar o acabamento do bolo, simplesmente nomeio e traduzo as colunas e ordeno os filmes pela nova média que criei. Por último, salvo o arquivo em csv:
 
 {% highlight python %}
 filmes_para_assistir.columns = ['Título', 'Ano', 'Gênero', 'Média ponderada', 'Média Aritmética', 'Média']
