@@ -1,4 +1,4 @@
-# Rodrigo's Portfolio <span style='font-size:40px;'>&#128054;</span>
+# Rodrigo's Portfolio &nbsp;<span style='font-size:45px;'>&#128054;</span>
 
 
 ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)
@@ -21,3 +21,32 @@
 
 
 ![](https://img.shields.io/static/v1?label=Template&message=Mínima&color=red) ![](https://img.shields.io/static/v1?label=&message=Gemfile&color=red) ![](https://img.shields.io/static/v1?label=&message=Ruby&color=red) ![](https://img.shields.io/static/v1?label=&message=Markdown&color=red) ![](https://img.shields.io/static/v1?label=&message=HTML&color=red)
+
+
+
+<hr>
+<br>
+
+Link Repositório Blog : https://github.com/rodrigo-br/Portfolio/tree/main/Blog%20Extraordinario%20Insolito
+
+Link Blog : http://extraordinarioinsolito.com/
+
+
+<hr>
+
+Link Repositório Projeto Pandas Filmes de Terror https://github.com/rodrigo-br/Portfolio/tree/main/Melhores%20filmes%20terror%20iMDB
+
+<hr>
+
+Link Repositório Calculadora : https://github.com/rodrigo-br/Portfolio/tree/main/Calculadora%20contas%20individuais%20LazyProject
+
+Link Código Calculadora : https://github.com/rodrigo-br/Portfolio/blob/main/Calculadora%20contas%20individuais%20LazyProject/code/lazycapybara.py
+
+<hr>
+
+Link Repositório Jogo de Luta : https://github.com/rodrigo-br/Portfolio/tree/main/Jogo%20de%20luta%20por%20turnos
+
+Link Código Jogo de Luta : https://github.com/rodrigo-br/Portfolio/blob/main/Jogo%20de%20luta%20por%20turnos/code/avaliacao.py
+
+<hr>
+
