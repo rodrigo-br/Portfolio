@@ -27,6 +27,7 @@
 <hr>
 <br>
 
+
 Link Repositório Blog : https://github.com/rodrigo-br/Portfolio/tree/main/Blog%20Extraordinario%20Insolito
 
 Link Blog : http://extraordinarioinsolito.com/
@@ -50,3 +51,34 @@ Link Código Jogo de Luta : https://github.com/rodrigo-br/Portfolio/blob/main/Jo
 
 <hr>
 
+```mermaid
+
+graph TD;
+
+Portfolio-->Blog
+
+Portfolio-->Projeto
+
+Portfolio-->Jogo
+
+Portfolio-->LazyCapybara
+
+Blog-->Link&nbsp
+click Link&nbsp "http://extraordinarioinsolito.com"
+
+Blog-->Repositório&nbsp
+click Repositório&nbsp "https://github.com/rodrigo-br/Portfolio/tree/main/Blog_Extraordinario_Insolito"
+
+Projeto-->Repositório
+
+Projeto-->Link
+
+Jogo-->Repositório&nbsp&nbsp
+
+Jogo-->&nbspLink
+
+LazyCapybara-->&nbspRepositório&nbsp&nbsp
+
+LazyCapybara-->&nbspLink&nbsp
+
+```
