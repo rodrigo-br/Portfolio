@@ -28,57 +28,15 @@
 <br>
 
 
-Link Repositório Blog : https://github.com/rodrigo-br/Portfolio/tree/main/Blog%20Extraordinario%20Insolito
-
-Link Blog : http://extraordinarioinsolito.com/
 
 
 <hr>
 
-Link Repositório Projeto Pandas Filmes de Terror https://github.com/rodrigo-br/Portfolio/tree/main/Melhores%20filmes%20terror%20iMDB
+![](https://img.shields.io/badge/Blog--gray?style=flat)[![](https://img.shields.io/badge/-Link-purple?style=flat)](http://extraordinarioinsolito.com/) [![](https://img.shields.io/badge/-Repositório-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/tree/main/Blog_Extraordinario_Insolito)
 
-<hr>
+![](https://img.shields.io/badge/Pandas_Filmes--gray?style=flat)[![](https://img.shields.io/badge/-Código-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/blob/main/Melhores_filmes_terror_iMDB/IMDb_Movies_2.ipynb) [![](https://img.shields.io/badge/-Repositório-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/blob/main/Melhores_filmes_terror_iMDB/)
 
-Link Repositório Calculadora : https://github.com/rodrigo-br/Portfolio/tree/main/Calculadora%20contas%20individuais%20LazyProject
+![](https://img.shields.io/badge/Calculadora--gray?style=flat)[![](https://img.shields.io/badge/-Código-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/blob/main/Calculadora_contas_individuais_LazyProject/code/lazycapybara.py) [![](https://img.shields.io/badge/-Repositório-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/tree/main/Calculadora_contas_individuais_LazyProject)
 
-Link Código Calculadora : https://github.com/rodrigo-br/Portfolio/blob/main/Calculadora%20contas%20individuais%20LazyProject/code/lazycapybara.py
-
-<hr>
-
-Link Repositório Jogo de Luta : https://github.com/rodrigo-br/Portfolio/tree/main/Jogo%20de%20luta%20por%20turnos
-
-Link Código Jogo de Luta : https://github.com/rodrigo-br/Portfolio/blob/main/Jogo%20de%20luta%20por%20turnos/code/avaliacao.py
-
-<hr>
-
-```mermaid
-
-graph TD;
-
-Portfolio-->Blog
-
-Portfolio-->Projeto
-
-Portfolio-->Jogo
-
-Portfolio-->LazyCapybara
-
-Blog-->Link&nbsp
-click Link&nbsp "http://extraordinarioinsolito.com"
-
-Blog-->Repositório&nbsp
-click Repositório&nbsp "https://github.com/rodrigo-br/Portfolio/tree/main/Blog_Extraordinario_Insolito"
-
-Projeto-->Repositório
-
-Projeto-->Link
-
-Jogo-->Repositório&nbsp&nbsp
-
-Jogo-->&nbspLink
-
-LazyCapybara-->&nbspRepositório&nbsp&nbsp
-
-LazyCapybara-->&nbspLink&nbsp
-
-```
+![](https://img.shields.io/badge/Jogo_de_Luta--gray?style=flat)[![](https://img.shields.io/badge/-Código-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/blob/main/Jogo_de_luta_por_turnos/code/avaliacao_GUI.ipynb) [![](https://img.shields.io/badge/-Repositório-purple?style=flat)](https://github.com/rodrigo-br/Portfolio/tree/main/Jogo_de_luta_por_turnos)
+<br>
