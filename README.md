@@ -23,12 +23,8 @@
 ![](https://img.shields.io/static/v1?label=Template&message=Mínima&color=red) ![](https://img.shields.io/static/v1?label=&message=Gemfile&color=red) ![](https://img.shields.io/static/v1?label=&message=Ruby&color=red) ![](https://img.shields.io/static/v1?label=&message=Markdown&color=red) ![](https://img.shields.io/static/v1?label=&message=HTML&color=red)
 
 
-<br>
-
-
-
-
 <hr>
+
 
 ## Links diretos &nbsp;<span style='font-size:40px;'>&#128279;</span>
 
