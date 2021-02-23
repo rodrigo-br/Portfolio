@@ -26,6 +26,11 @@
 <br>
 
 
+## Sobre:
+Este é um repositório focado em registrar, guardar e acompanhar todo o meu processo evolutivo com os meus estudos.
+Sinta-se à vontade para participar, compartilhar ideias, correções, sugestões de melhora, iniciar discussões e criticar. Toda opinião será muito bem vinda e de extrema importância.
+
+
 <hr>
 
 ## Links diretos &nbsp;<span style='font-size:40px;'>&#128279;</span>
