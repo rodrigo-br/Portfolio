@@ -31,6 +31,7 @@ class Jogador:
     global ataque_forte_defesa
     def ataque_forte_defesa(self, destino):
         destino.vida -= (self.ataque * 2) - destino.defesa * 2
+        print(f'O ataque removeu {(self.ataque * 2) - (destino.defesa * 2)}')
         reset_defesa(destino)
         
     global reset_defesa    
