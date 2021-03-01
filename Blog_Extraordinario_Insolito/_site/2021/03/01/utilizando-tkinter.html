@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="/css/tango.css" type="text/css" /><head>
+
+  <meta property="og:image" content="http://extraordinarioinsolito.com/assets/logo.jpg">
+  <meta property="og:image:width" content="800">
+  <meta property="og:image:height" content="600">
+<meta property="og:description" content="" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Um código aleatório com Tkinter | Extraordinário Insólito</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Um código aleatório com Tkinter" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Um dia eu resolvi complicar um pouco mais o que era para ser um simples exercício de lógica" />
+<meta property="og:description" content="Um dia eu resolvi complicar um pouco mais o que era para ser um simples exercício de lógica" />
+<link rel="canonical" href="http://localhost:4000/2021/03/01/utilizando-tkinter.html" />
+<meta property="og:url" content="http://localhost:4000/2021/03/01/utilizando-tkinter.html" />
+<meta property="og:site_name" content="Extraordinário Insólito" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-01T00:00:00-03:00" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","url":"http://localhost:4000/2021/03/01/utilizando-tkinter.html","headline":"Um código aleatório com Tkinter","dateModified":"2021-03-01T00:00:00-03:00","datePublished":"2021-03-01T00:00:00-03:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/03/01/utilizando-tkinter.html"},"description":"Um dia eu resolvi complicar um pouco mais o que era para ser um simples exercício de lógica","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Extraordinário Insólito" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/">Extraordinário Insólito</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/Sobre/">Sobre</a><a class="page-link" href="/Portfolio/">Portfólio</a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Um código aleatório com Tkinter</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2021-03-01T00:00:00-03:00" itemprop="datePublished">Mar 1, 2021
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <hr>
+
+<p><br></p>
+
+<h2 id="utilizando-o-tkinter-para-fazer-um-jogo-simples">Utilizando o Tkinter para fazer um jogo simples</h2>
+
+<p>Antes de mais nada é importante deixar claro que a ideia do jogo não é a diversão com ele em si, mas sim com o código. O jogo se trata apenas de uma luta entre um jogador humano e um computador. Sendo totalmente estático, utilizando apenas imagens (muito bem desenhadas por sinal) e dois botões para clicar (ataque e defesa).</p>
+
+<p><br></p>
+
+<h3 id="como-surgiu-a-ideia">Como surgiu a ideia</h3>
+
+<p>Um dia um colega da faculdade me ligou e me perguntou se eu entendia de vetores e matriz em C, para ajudar um outro amigo dele em um trabalho da faculdade dele de Engenharia Química.
+O trabalho era da matéria de Algoritmos e Programação Computacional, do professor Bruno Faccini Santoro (que eu não conheço).</p>
+
+<p>Esta era a proposta :
+<br></p>
+<blockquote>
+
+  <p>Criar um programa simulando um jogo de luta. Haverá
+dois jogadores na partida, sendo o Jogador 1 o usuário (humano) e o Jogador 2 o computador.
+Os jogadores duelam em uma sequência de embates (turnos). A cada jogador estão associados quatro números: seu poder de Ataque,
+seu poder de Defesa, seu valor de Sorte e o seu nível de Saúde (HP). A soma dos valores de
+Ataque, Defesa e Sorte deve ser exatamente igual a 30, sendo que cada um dos parâmetros deve
+ser menor ou igual a 20. Para o Jogador 1, essas quantidades serão escolhidas pelo usuário antes
+de iniciar a partida. Para o Jogador 2, o usuário poderá escolher um entre quatro oponentes:<br></p>
+  <ul>
+    <li>Balanceado: Ataque = 10, Defesa = 10, Sorte = 10.</li>
+    <li>Ofensivo: Ataque = 15, Defesa = 5, Sorte = 10.</li>
+    <li>Defensivo: Ataque = 5, Defesa = 15, Sorte = 10.</li>
+    <li>Sortudo: Ataque = 5, Defesa = 5, Sorte = 20.
+<br><br>
+Em cada turno, os jogadores devem escolher entre atacar ou defender.
+No ataque, seu poder de Ataque é dobrado apenas para aquele ataque. No caso
+da defesa, seu poder de Defesa é temporariamente dobrado.
+Os dois jogadores iniciam com 100 pontos de Saúde. Ambos escolhem os
+seus movimentos (o Jogador 2 por meio
+de uma “inteligência artificial”) e então o programa calcula o dano causado por seus ataques:</li>
+    <li>Se o valor de Ataque do Jogador 1 naquele instante é maior do que o valor de Defesa
+do Jogador 2 no mesmo instante, o nível de Saúde do Jogador 2 será reduzido de uma
+quantidade igual à diferença entre esses valores. Em caso contrário, o nível de Saúde do
+Jogador 2 não é alterado.</li>
+    <li>Posteriormente, os Jogadores têm uma chance de causar um dano extra conforme o seu
+nível de Sorte. É gerado um número aleatório entre 1 e 20 e se o parâmetro de
+Sorte do Jogador for maior do que o valor sorteado, então o oponente sofrerá 10 de dano adicional.
+Esse “ataque crítico” é independente do que
+aconteceu no item anterior.</li>
+  </ul>
+
+</blockquote>
+
+<p>Até então, tudo tranquilo. Ajudei o colega do meu colega(?) a realizar o trabalho, aproveitei para dar uma olhada novamente na linguagem C e fiquei pensando em fazer esse programa em Python e fazer uma interface só para praticar. Por que não?</p>
+
+<h3 id="mas-o-tkinter-não-é-orientado-a-objeto">Mas o Tkinter não é orientado a objeto?</h3>
+
+<p>Sim. Mas por se tratar de uma GUI bem trivial, resolvi só utilizar o básico mesmo. De qualquer forma, já me comprometi a reescrever este código utilizando POO e irei posta-lo aqui no futuro :)</p>
+
+<h3 id="vamos-ao-código">Vamos ao código</h3>
+
+<p>Como sempre, iniciando pelas importações</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">tkinter</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageTk</span><span class="p">,</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">tkinter.font</span> <span class="k">as</span> <span class="n">tkFont</span></code></pre></figure>
+
+<p>O randint é para gerar o valor aleatório entre 1 e 20 para testar se haverá o dano crítico ou não. Também utilizei para decidir os movimentos do Jogador 2 (computador), utilizando um range de 2 números, sendo um deles para ataque e outro para defesa.<br>O restante é coisa do Tkinter mesmo.</p>
+
+<p>Agora é feita a configuração da interface e o upload das imagens</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">root</span> <span class="o">=</span> <span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Capybara Fight'</span><span class="p">)</span>
+<span class="n">fundo</span> <span class="o">=</span> <span class="s">'#ffaec9'</span>
+<span class="n">rosa</span> <span class="o">=</span> <span class="s">'#ffccdd'</span>
+<span class="n">root</span><span class="p">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bg</span> <span class="o">=</span> <span class="n">fundo</span><span class="p">)</span>
+<span class="n">root</span><span class="p">.</span><span class="n">iconbitmap</span><span class="p">(</span><span class="s">'./imagens/icone.ico'</span><span class="p">)</span>
+<span class="n">fontStyle</span> <span class="o">=</span> <span class="n">tkFont</span><span class="p">.</span><span class="n">Font</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s">"Lucida Grande"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fontStyle2</span> <span class="o">=</span> <span class="n">tkFont</span><span class="p">.</span><span class="n">Font</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s">"Lucida Grande"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">personagem_principal</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_principal.png"</span><span class="p">))</span>
+<span class="n">personagem_agilidade</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_agilidade.png"</span><span class="p">))</span>
+<span class="n">personagem_balanceado</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_balanceado.png"</span><span class="p">))</span>
+<span class="n">personagem_escudo</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_escudo.png"</span><span class="p">))</span>
+<span class="n">personagem_sorte</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_sorte.png"</span><span class="p">))</span>
+<span class="n">personagem_principal_morto</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_principal_morto.png"</span><span class="p">))</span>
+<span class="n">personagem_agilidade_morto</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_agilidade_morto.png"</span><span class="p">))</span>
+<span class="n">personagem_balanceado_morto</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_balanceado_morto.png"</span><span class="p">))</span>
+<span class="n">personagem_escudo_morto</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_escudo_morto.png"</span><span class="p">))</span>
+<span class="n">personagem_sorte_morto</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/personagem_sorte_morto.png"</span><span class="p">))</span>
+<span class="n">vida_100_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_100.png"</span><span class="p">))</span>
+<span class="n">vida_90_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_90.png"</span><span class="p">))</span>
+<span class="n">vida_80_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_80.png"</span><span class="p">))</span>
+<span class="n">vida_70_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_70.png"</span><span class="p">))</span>
+<span class="n">vida_60_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_60.png"</span><span class="p">))</span>
+<span class="n">vida_50_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_50.png"</span><span class="p">))</span>
+<span class="n">vida_40_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_40.png"</span><span class="p">))</span>
+<span class="n">vida_30_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_30.png"</span><span class="p">))</span>
+<span class="n">vida_20_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_20.png"</span><span class="p">))</span>
+<span class="n">vida_10_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_10.png"</span><span class="p">))</span>
+<span class="n">vida_0_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/vida_base.png"</span><span class="p">))</span>
+<span class="n">morreu_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/morreu.png"</span><span class="p">))</span>
+<span class="n">venceu_label</span> <span class="o">=</span> <span class="n">ImageTk</span><span class="p">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">"./imagens/venceu.png"</span><span class="p">))</span></code></pre></figure>
+
+<p>Como a maior parte do programa é feita de imagens, criarei essas imagens diversas vezes ao longo do código</p>
+
+<p>Mais interface. Esta é a primeira tela que aparece ao abrir o programa. Nela podemos ler as instruções, escolher os atributos do nosso personagem
+e o adversário.<br>O código se inicia com um laço for para limpar toda a tela, passando por todos os widgets e ‘destruindo-os’. O objeto disso é poder limpar a última tela do jogo e retornar para esta. Esse laço for será utilizado novamente para trocar desta tela para outra.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">global</span> <span class="n">main</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">root</span><span class="p">.</span><span class="n">winfo_children</span><span class="p">():</span>
+        <span class="n">ele</span><span class="p">.</span><span class="n">destroy</span><span class="p">()</span>
+    <span class="n">frame_instrucoes</span> <span class="o">=</span> <span class="n">LabelFrame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Instruções'</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">frame_instrucoes</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">Label</span><span class="p">(</span><span class="n">frame_instrucoes</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Cada jogador terá uma ação por turno, escolhendo entre uma manobra arriscada ou conservadora.</span><span class="se">\n</span><span class="s">No caso do movimento arriscado, seu poder de Ataque é dobrado apenas neste instante</span><span class="se">\n</span><span class="s">No caso do movimento conservador, seu poder de Defesa é temporariamente dobrado.</span><span class="se">\n</span><span class="s">Tem uma chance de causar 10 de dano extra (crítico) conforme o seu nível de Sorte.</span><span class="se">\n</span><span class="s">É feito o sorteio de um número aleatório entre 1 e 20 e se o parâmetro de Sorte for maior do que o valor sorteado,</span><span class="se">\n</span><span class="s">então o Jogador 2 sofrerá esse ataque crítico, que é independente do que aconteceu no item anterior.'</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+               
+    <span class="n">frame_atributos</span> <span class="o">=</span> <span class="n">LabelFrame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Escolha seus atributos'</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">frame_atributos</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">Label</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Escolha seus atributos.</span><span class="se">\n</span><span class="s">Você possui 30 pontos para dividir entre ataque, defesa e sorte.</span><span class="se">\n</span><span class="s">*Um atributo precisa ter ao menos 1 ponto e no máximo 20'</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">Label</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Ataque'</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">entryAtaque</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">entryAtaque</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Label</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Defesa'</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">entryDefesa</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">entryDefesa</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Label</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Sorte'</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">entrySorte</span> <span class="o">=</span> <span class="n">Entry</span><span class="p">(</span><span class="n">frame_atributos</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">entrySorte</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">frame_adversario</span> <span class="o">=</span> <span class="n">LabelFrame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Escolha seu adversario'</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">bd</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">frame_adversario</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">variavel_escolha</span> <span class="o">=</span> <span class="n">IntVar</span><span class="p">()</span>
+    <span class="n">variavel_escolha</span><span class="p">.</span><span class="nb">set</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span>
+    <span class="n">Radiobutton</span><span class="p">(</span><span class="n">frame_adversario</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Ofensivo'</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">variavel_escolha</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">escolha_adversario</span><span class="p">(</span><span class="n">variavel_escolha</span><span class="p">.</span><span class="n">get</span><span class="p">())).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">Radiobutton</span><span class="p">(</span><span class="n">frame_adversario</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Balanceado'</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">variavel_escolha</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">escolha_adversario</span><span class="p">(</span><span class="n">variavel_escolha</span><span class="p">.</span><span class="n">get</span><span class="p">())).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">Radiobutton</span><span class="p">(</span><span class="n">frame_adversario</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Defensivo'</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">variavel_escolha</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">escolha_adversario</span><span class="p">(</span><span class="n">variavel_escolha</span><span class="p">.</span><span class="n">get</span><span class="p">())).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">Radiobutton</span><span class="p">(</span><span class="n">frame_adversario</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle2</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'Sortudo'</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">variavel_escolha</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">escolha_adversario</span><span class="p">(</span><span class="n">variavel_escolha</span><span class="p">.</span><span class="n">get</span><span class="p">())).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></figure>
+
+<p><br></p>
+
+<p><img src="/assets/img_posts/tela_inicial.jpg" alt="Tela inicial do projeto"></p>
+
+<p><br></p>
+
+<p>Após selecionar os atributos e o adversário, é só iniciar a luta</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">global</span> <span class="n">escolha_adversario</span>
+    <span class="k">def</span> <span class="nf">escolha_adversario</span><span class="p">(</span><span class="n">variavel_escolha</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">adversario</span>
+        <span class="n">adversario</span> <span class="o">=</span> <span class="n">variavel_escolha</span>
+        
+    <span class="n">jogador_1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">100</span><span class="p">]]</span>
+    <span class="n">jogador_2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">100</span><span class="p">]]</span>
+    <span class="n">oponente_0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="n">oponente_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="n">oponente_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+    <span class="n">oponente_3</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+    <span class="k">global</span> <span class="n">contador</span>
+    <span class="n">contador</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">global</span> <span class="n">conta</span>
+    <span class="k">def</span> <span class="nf">conta</span><span class="p">():</span>
+        <span class="k">global</span> <span class="n">contador</span>
+        <span class="n">contador</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">botao</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">"Iniciar luta"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">apaga_tudo</span><span class="p">(</span><span class="n">ataque_1</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">entryAtaque</span><span class="p">.</span><span class="n">get</span><span class="p">()),</span> <span class="n">defesa_1</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">entryDefesa</span><span class="p">.</span><span class="n">get</span><span class="p">()),</span> <span class="n">sorte_1</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">entrySorte</span><span class="p">.</span><span class="n">get</span><span class="p">()),</span> <span class="n">oponente</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">adversario</span><span class="p">)))</span>
+    <span class="n">botao</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/tela_round_1.jpg" alt="Tela inicial do projeto"></p>
+
+<p><br></p>
+
+<p>Agora, ainda simples:</p>
+<ul>
+  <li>Deleto a tela anterior utilizando aquele mesmo for de antes para começar uma nova</li>
+  <li>Insiro os atributos aos jogadores com o .insert</li>
+  <li>Crio uma função diferente para cada tipo de oponente que pode ser escolhido, para atribuir as imagens do oponente vivo e morto (caso ele morra)</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">    <span class="k">global</span> <span class="n">apaga_tudo</span>
+    <span class="k">def</span> <span class="nf">apaga_tudo</span><span class="p">(</span><span class="n">ataque_1</span><span class="p">,</span> <span class="n">defesa_1</span><span class="p">,</span> <span class="n">sorte_1</span><span class="p">,</span> <span class="n">oponente</span><span class="p">):</span>            
+        <span class="n">jogador_1</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">ataque_1</span><span class="p">,</span> <span class="n">defesa_1</span><span class="p">,</span> <span class="n">sorte_1</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">oponente</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">jogador_2</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">oponente_0</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">malvado</span><span class="p">():</span>           
+                <span class="n">agilidade</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_agilidade</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">agilidade</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">morto_2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_agilidade_morto</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">morto_2</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                
+        <span class="k">elif</span> <span class="n">oponente</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">jogador_2</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">oponente_1</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">malvado</span><span class="p">():</span>         
+                <span class="n">balanceado</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_balanceado</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">balanceado</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">morto_2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_balanceado_morto</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">morto_2</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">oponente</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">jogador_2</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">oponente_2</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">malvado</span><span class="p">():</span>
+                <span class="n">escudo</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_escudo</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">escudo</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">morto_2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_escudo_morto</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">morto_2</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">jogador_2</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">oponente_3</span><span class="p">)</span>
+            <span class="k">def</span> <span class="nf">malvado</span><span class="p">():</span>
+                <span class="n">sorte</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_sorte</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">sorte</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">morto_2</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_sorte_morto</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">morto_2</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                
+        <span class="n">defesa_jogador_1</span> <span class="o">=</span> <span class="n">defesa_1</span>
+        <span class="n">defesa_jogador_2</span> <span class="o">=</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span></code></pre></figure>
+
+<p><img src="/assets/img_posts/tela_meio_luta.jpg" alt="Tela inicial do projeto"></p>
+
+<p><br></p>
+
+<p>Agora, o que cria esse resultado da imagem acima, é uma enorme função que:</p>
+<ul>
+  <li>Destrói a tela anterior</li>
+  <li>Cria 11 imagens mostrando a vida para cada jogador, mais uma imagem de cada jogador vivo e outra morto.</li>
+  <li>Inicia um cabeçalho mostrando o ROUND, as imagens a serem mostradas, dois botões, uma função para cada botão e uma terceira função 
+para a jogada do Jogador 2. Dentro de cada função já é considerado se o oponente está defendendo, se houve crítico, se houve e qual o valor de dano causado.</li>
+  <li>Por último, verifica se houve alguma morte.</li>
+  <li>Ao fim do duelo, apaga a tela e exibe uma nova anunciando o resultado.</li>
+  <li>É liberado um botão para voltar para a tela inicial.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python">        <span class="k">global</span> <span class="n">lutinha</span>
+        <span class="k">def</span> <span class="nf">lutinha</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">root</span><span class="p">.</span><span class="n">winfo_children</span><span class="p">():</span>
+                <span class="n">ele</span><span class="p">.</span><span class="n">destroy</span><span class="p">()</span>
+            
+            <span class="k">if</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">vida_100</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_100_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> 
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">:</span>
+                <span class="n">vida_90</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_90_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+                <span class="n">vida_80</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_80_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">80</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">:</span>
+                <span class="n">vida_70</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_70_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">70</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span>
+                <span class="n">vida_60</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_60_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+                <span class="n">vida_50</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_50_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">:</span>
+                <span class="n">vida_40</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_40_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">40</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="n">vida_30</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_30_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">30</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="n">vida_20</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_20_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">vida_10</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_10_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">vida_base</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_0_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                
+            <span class="k">if</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">vida_100</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_100_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">90</span><span class="p">:</span>
+                <span class="n">vida_90</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_90_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">90</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">:</span>
+                <span class="n">vida_80</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_80_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">80</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70</span><span class="p">:</span>
+                <span class="n">vida_70</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_70_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">70</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">60</span><span class="p">:</span>
+                <span class="n">vida_60</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_60_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">60</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+                <span class="n">vida_50</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_50_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">50</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">:</span>
+                <span class="n">vida_40</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_40_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">40</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
+                <span class="n">vida_30</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_30_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">30</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">:</span>
+                <span class="n">vida_20</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_20_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">20</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+                <span class="n">vida_10</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_10_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">vida_base</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">vida_0_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                 
+            <span class="n">principal_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_principal</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">principal_label</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">malvado</span><span class="p">()</span>
+            <span class="k">def</span> <span class="nf">cabeca</span><span class="p">():</span>
+                <span class="n">conta</span><span class="p">()</span>
+                <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">'{}</span><span class="se">\n</span><span class="s">{} ROUND {} {}</span><span class="se">\n</span><span class="s">{}'</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="mi">29</span> <span class="o">*</span> <span class="s">'*'</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="s">'*'</span><span class="p">,</span> <span class="n">contador</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="s">'*'</span><span class="p">,</span> <span class="mi">29</span> <span class="o">*</span> <span class="s">'*'</span><span class="p">),</span> <span class="n">bg</span><span class="o">=</span><span class="n">fundo</span><span class="p">,</span> <span class="n">font</span> <span class="o">=</span> <span class="n">fontStyle</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">f'</span><span class="se">\n\n</span><span class="s">Saúde atual do Jogador 1: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="se">\t\t</span><span class="s">Saúde atual do Jogador 2: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="si">}</span><span class="s">'</span><span class="p">,</span> <span class="n">bg</span> <span class="o">=</span> <span class="n">fundo</span><span class="p">,</span> <span class="n">font</span> <span class="o">=</span> <span class="n">fontStyle2</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+               
+            <span class="n">cabeca</span><span class="p">()</span>
+            <span class="n">atacar_1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">"Atacar"</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">ataque_jogador_1</span><span class="p">(</span><span class="n">jogador_1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">defesa_jogador_2</span><span class="p">)).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">defender_1</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">"Defender"</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="n">rosa</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">defesa_jogador_1</span><span class="p">()).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          
+            <span class="k">global</span> <span class="n">ataque_jogador_1</span>
+            <span class="k">def</span> <span class="nf">ataque_jogador_1</span><span class="p">(</span><span class="n">dano</span><span class="p">,</span> <span class="n">defesa</span><span class="p">):</span>
+                <span class="n">valor_ataque</span> <span class="o">=</span> <span class="p">(</span><span class="n">dano</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">defesa</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">valor_ataque</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="n">valor_ataque</span>
+                <span class="n">defesa</span> <span class="o">=</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>
+                    <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
+                <span class="n">jogada_jogador_2</span><span class="p">()</span>
+                
+            <span class="k">global</span> <span class="n">defesa_jogador_1</span>
+            <span class="k">def</span> <span class="nf">defesa_jogador_1</span><span class="p">():</span>
+                <span class="n">defesa_1</span> <span class="o">=</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+                <span class="k">if</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]:</span>
+                    <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
+                <span class="n">jogada_jogador_2</span><span class="p">(</span><span class="n">defesa_1</span><span class="p">)</span>                
+
+            <span class="k">global</span> <span class="n">jogada_jogador_2</span>
+            <span class="k">def</span> <span class="nf">jogada_jogador_2</span><span class="p">(</span><span class="n">defesa_1</span><span class="o">=</span><span class="n">jogador_1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]):</span>
+                <span class="k">if</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">defesa_1</span> <span class="o">&lt;</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">:</span>
+                        <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">jogador_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">defesa_1</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">defesa2</span> <span class="o">=</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+                <span class="k">if</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">2</span><span class="p">]:</span>
+                    <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
+                <span class="n">defesa_1</span> <span class="o">=</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">lutinha</span><span class="p">()</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">root</span><span class="p">.</span><span class="n">winfo_children</span><span class="p">():</span>
+                        <span class="n">ele</span><span class="p">.</span><span class="n">destroy</span><span class="p">()</span>
+                        <span class="n">principal_label</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_principal</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                        <span class="n">principal_label</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                        <span class="n">malvado</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">morreu</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">morreu_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                        <span class="n">venceu</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">venceu_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                        <span class="n">morto_1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_principal_morto</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">morreu</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">morreu_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                        <span class="n">venceu</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">venceu_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">jogador_2</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">jogador_1</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">morreu</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">morreu_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                        <span class="n">morreu</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">morreu_label</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                        <span class="n">morto_1</span> <span class="o">=</span> <span class="n">Label</span><span class="p">(</span><span class="n">image</span><span class="o">=</span><span class="n">personagem_principal_morto</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+                    <span class="n">main_button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fontStyle</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s">"Reiniciar"</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">main</span><span class="p">()).</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+                    
+        <span class="n">lutinha</span><span class="p">()</span>
+<span class="n">main</span><span class="p">()</span>
+
+<span class="n">root</span><span class="p">.</span><span class="n">mainloop</span><span class="p">()</span></code></pre></figure>
+
+<p><br></p>
+
+<p>Como é possível notar, deixei ali no finalzinho a chamada do main() e depois da lutinha(), pois são as duas funções que, no primeiro uso, não são chamadas através de botões.</p>
+
+<p><img src="/assets/img_posts/tela_final.jpg" alt="Tela inicial do projeto"></p>
+
+<p><br></p>
+
+<h2 id="curiosidades-inúteis">Curiosidades inúteis</h2>
+
+<ul>
+  <li>Eu mesmo fiz os desenhos no paint. Sei que não parece pois são incríveis desenhos dotados das mais altas técnicas de design moderno, mas acredite. Foi no paint.</li>
+  <li>Cada oponente possui um desenho próprio</li>
+  <li>Meu favorito é o <em>Sortudo</em> (última imagem do post)</li>
+  <li>É possível empatar</li>
+  <li>Coloquei quase tudo global porque não aguentava mais ler <em>“UnboundLocalError: local variable ‘contador’ referenced before assignment”</em>
+</li>
+  <li>O colega do meu colega nunca retornou dizendo se foi bem no trabalho ou não :(</li>
+</ul>
+
+<p><br></p>
+
+<p><img src="/assets/img_posts/tela_final_defesa.jpg" alt="Tela inicial do projeto"></p>
+
+<p><br></p>
+
+<p><img src="/assets/img_posts/tela_final_empate.jpg" alt="Tela inicial do projeto"></p>
+
+<p><br>
+<br></p>
+
+<h3 id="considerações-finais">Considerações finais</h3>
+
+<p>Me diverti muito com essa brincadeira. Ri demais com o desenrolar do código, com cada desenho que fiz e até com os bugs.<br>Recomendo
+esses trabalhos de engenharia química pois, apesar deste ser simples, foi bem interessante e estimulador. Ajudem colegas de colegas que é uma coisa boa, você pratica um pouco de coisas aleatórias, aprende enquanto ensina e pode fazer amigos para trocar códigos, experiências e conhecimentos. Não foi o meu caso, mas paciência.</p>
+
+<p><img src="/assets/img_posts/personagem_sorte.png" alt="Tela inicial do projeto"></p>
+
+<p><br>
+<br></p>
+
+<p><i>Obrigado por ter lido até aqui, você é uma ótima pessoa! Tenha uma boa semana. <img class="emoji" title=":heart:" alt=":heart:" src="https://github.githubassets.com/images/icons/emoji/unicode/2764.png" height="20" width="20"></i></p>
+
+<p><br></p>
+
+<hr>
+
+
+  </div>
+<a class="u-url" href="/2021/03/01/utilizando-tkinter.html" hidden></a>
+</article>
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://extraordinario-insolito.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Extraordinário Insólito</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Rodrigo Alves Brito</li>
+<li><a class="u-email" href="mailto:rodrigoab123@gmail.com">rodrigoab123@gmail.com</a></li>
+</ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+<ul class="social-media-list">
+<li><a href="https://github.com/rodrigo-br"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">GitHub</span></a></li>
+<li><a href="https://www.linkedin.com/in/rodrigoalves-brito"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">Linkedin</span></a></li>
+</ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Um diário onde escrevo toda a minha trajetória para ser um Cientista de Dados. Interesse especial em Machine Learning e Deep Learning.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
