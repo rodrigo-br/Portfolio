@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-01T03:54:40-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Extraordinário Insólito</title><subtitle>Um apanhado de estudos e projetos realizados durante toda a minha trajetória acadêmica e profissional</subtitle><entry><title type="html">Um código aleatório com Tkinter</title><link href="http://localhost:4000/2021/03/01/utilizando-tkinter.html" rel="alternate" type="text/html" title="Um código aleatório com Tkinter" /><published>2021-03-01T00:00:00-03:00</published><updated>2021-03-01T00:00:00-03:00</updated><id>http://localhost:4000/2021/03/01/utilizando-tkinter</id><content type="html" xml:base="http://localhost:4000/2021/03/01/utilizando-tkinter.html">&lt;hr /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-03-01T04:06:00-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Extraordinário Insólito</title><subtitle>Um apanhado de estudos e projetos realizados durante toda a minha trajetória acadêmica e profissional</subtitle><entry><title type="html">Um código aleatório com Tkinter</title><link href="http://localhost:4000/2021/03/01/utilizando-tkinter.html" rel="alternate" type="text/html" title="Um código aleatório com Tkinter" /><published>2021-03-01T00:00:00-03:00</published><updated>2021-03-01T00:00:00-03:00</updated><id>http://localhost:4000/2021/03/01/utilizando-tkinter</id><content type="html" xml:base="http://localhost:4000/2021/03/01/utilizando-tkinter.html">&lt;hr /&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -353,6 +353,10 @@ para a jogada do Jogador 2. Dentro de cada função já é considerado se o opon
 &lt;p&gt;Como é possível notar, deixei ali no finalzinho a chamada do main() e depois da lutinha(), pois são as duas funções que, no primeiro uso, não são chamadas através de botões.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img_posts/tela_final.jpg&quot; alt=&quot;Tela inicial do projeto&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Aqui está o link do &lt;a href=&quot;https://github.com/rodrigo-br/Portfolio/tree/main/Jogo_de_luta_por_turnos&quot;&gt;&lt;strong&gt;repositório no GitHub&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
