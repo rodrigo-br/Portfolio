@@ -17,7 +17,6 @@ gem "github-pages", group: :jekyll_plugins
 gem 'rouge'
 gem 'jemoji'
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.12"
 end
 gem 'jekyll-feed'
 

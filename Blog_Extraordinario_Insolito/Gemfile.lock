@@ -261,7 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-feed (~> 0.12)
+  jekyll-feed
   jemoji
   minima (~> 2.5)
   rouge
